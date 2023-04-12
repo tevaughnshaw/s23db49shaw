@@ -1,8 +1,15 @@
 var Tiger = require('../models/tiger');
 // List of all Costumes
-exports.tiger_list = function(req, res) {
- res.send('NOT IMPLEMENTED: Tiger list');
-};
+exports.tiger_list = async function(req, res) {
+    try{
+    theTigers = await Tiger.find();
+    res.send(theTigers);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
 // for a specific Costume.
 exports.tiger_detail = function(req, res) {
  res.send('NOT IMPLEMENTED: Tiger detail: ' + req.params.id);
