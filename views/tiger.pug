@@ -2,4 +2,8 @@ extends layout
 
 block content
   h1= title
-  
+  - let results = ["tiger1", "tiger2", "tiger3"]
+  div(class='container-fluid')
+    div(class='row')
+      each val, index in results
+        div(class='col-sm-2') #{val} #{index}

@@ -5,14 +5,13 @@ block content
   p New change added here
   button(type="button", class="btn btn-secondary" onclick='doReduce()') Press Me
   div(id="reduce") Reduce the value
- 
+  a(href="/tiger") Tiger
   script.
     //declare two variables
     let count = 20;
     let change = -1;  
     //function  
     function doReduce(){
-      console.log("sdjbdb")
       count += change;
       change -= 1;
       document.getElementById("reduce").innerHTML = "Count: " + count + " " + "Change: " + change;
