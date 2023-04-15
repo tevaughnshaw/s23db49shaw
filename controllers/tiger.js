@@ -11,9 +11,16 @@ exports.tiger_list = async function(req, res) {
     }
    };
 // for a specific Costume.
-exports.tiger_detail = function(req, res) {
- res.send('NOT IMPLEMENTED: Tiger detail: ' + req.params.id);
-};
+exports.tiger_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await Tiger.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+   };
 // Handle Costume create on POST.
 exports.tiger_create_post = async function(req, res) {
     console.log(req.body)
@@ -39,8 +46,24 @@ exports.tiger_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: Tiger delete DELETE ' + req.params.id);
 };
 // Handle Costume update form on PUT.
-exports.tiger_update_put = function(req, res) {
- res.send('NOT IMPLEMENTED: Tiger update PUT' + req.params.id);
+exports.tiger_update_put = async function(req, res) {
+ console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+ try {
+ let toUpdate = await Tiger.findById( req.params.id)
+ // Do updates of properties
+ if(req.body.tail)
+ toUpdate.tail = req.body.tail;
+ if(req.body.color) toUpdate.color = req.body.color;
+ if(req.body.weight) toUpdate.weight = req.body.weight;
+ let result = await toUpdate.save();
+ console.log("Sucess " + result)
+ res.send(result)
+ } catch (err) {
+ res.status(500)
+ res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+ }
 };
 // VIEWS
 // Handle a show all view
