@@ -1,0 +1,22 @@
+extends layout
+
+block content
+ h1= title
+
+ - let tigerid = toShow._id
+ - let tail = toShow.tail
+ - let color = toShow.color
+ - let weight = toShow.weight
+    div
+        div.row
+            div(class='tigerAttr mr-3') Tiger ID is:
+            div #{tigerid}
+        div.row
+            div(class='tigerAttr mr-3') Tiger Tail is:
+            div #{tail}
+        div.row
+            div(class='tigerAttr mr-3') Tiger Color is:
+            div #{color}
+        div.row
+            div(class='tigerAttr mr-3') Tiger Weight is:
+            div #{weight}

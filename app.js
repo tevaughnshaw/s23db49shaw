@@ -48,7 +48,7 @@ instance3.save().then(doc=>{
   console.error(err)
  })
 }
-let reseed = true;
+let reseed = false;
 if (reseed) { recreateDB();}
 
 var indexRouter = require('./routes/index');
