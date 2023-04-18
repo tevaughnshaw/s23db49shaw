@@ -6,10 +6,13 @@ var router = express.Router();
 router.get('/', tiger_controlers.tiger_view_all_Page );
 
 
-/* GET detail costume page */
+/* GET detail tiger page */
 //console.log("controler is: " + tiger_controlers);
 //console.log("function is: " + tiger_controlers.tiger_view_one_Page);
 
 router.get('/detail', tiger_controlers.tiger_view_one_Page);
+/* GET create tiger page */
+router.get('/create', tiger_controlers.tiger_create_Page);
+
 
 module.exports = router;
