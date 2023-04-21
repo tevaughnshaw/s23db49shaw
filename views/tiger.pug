@@ -4,6 +4,13 @@ block content
   h1= title
   - let items = results
   div(class='container-fluid')
-    div(class='row')
-      each val, index in items
-        div(class='col-lg-12' .mt-4) #{val} #{index}
+    div(class='row m-1')
+      each item in items
+        - let destination = `dispatch(\"/tiger/update?id=${item._id}\")`
+        div(class='col-lg-12' class='m-1') Tiger #{item.tail} #{item.color} weighs #{item.weight}
+          button.btn(class="btn-primary ml-1", onclick=destination) Update
+
+  script.
+    function dispatch(path){
+      window.location.href=path
+    }  
