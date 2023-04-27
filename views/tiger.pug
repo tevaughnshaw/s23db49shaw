@@ -3,12 +3,17 @@ extends layout
 block content
   h1= title
   - let items = results
+  - let createTiger = `dispatch(\"/tiger/create")`
+  button.btn(class="btn-primary ml-1", onclick=createTiger) Create
   div(class='container-fluid')
     div(class='row m-1')
       each item in items
         - let destination = `dispatch(\"/tiger/update?id=${item._id}\")`
+        - let createDestination = `dispatch(\"/tiger/detail?id=${item._id}\")`
         div(class='col-lg-12' class='m-1') Tiger #{item.tail} #{item.color} weighs #{item.weight}
           button.btn(class="btn-primary ml-1", onclick=destination) Update
+          button.btn(class="btn-primary ml-1", onclick=createDestination) Details
+
 
   script.
     function dispatch(path){
